@@ -23,13 +23,13 @@ namespace Mensajero.Comunicacion
         {
             clienteCom.Escribir("Ingresar medidor: ");
             int nroMedidor;
-            if (int.TryParse(Console.ReadLine().Trim(), out nroMedidor))
+            if (int.TryParse(clienteCom.Leer().Trim(), out nroMedidor))
             {
-                Console.WriteLine("Ingrese valor de consumo : ");
+                clienteCom.Escribir("Ingrese valor de consumo : ");
                 double valorConsumo;
                 DateTime datetime = new DateTime();
                 datetime = DateTime.Now;
-                if (double.TryParse(Console.ReadLine().Trim(), out valorConsumo))
+                if (double.TryParse(clienteCom.Leer().Trim(), out valorConsumo))
                 {
                     Medidor medidor = new Medidor()
                     {
@@ -44,12 +44,12 @@ namespace Mensajero.Comunicacion
                 }
                 else
                 {
-                    Console.WriteLine("Ingrese un valor de consumo válido");
+                    clienteCom.Escribir("Ingrese un valor de consumo válido");
                 }
             }
             else
             {
-                Console.WriteLine("Ingrese un número de medidor válido");
+                clienteCom.Escribir("Ingrese un número de medidor válido");
             }
 
             clienteCom.Desconectar();
